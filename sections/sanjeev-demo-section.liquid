@@ -1,0 +1,65 @@
+<style>
+    .outer-box {
+        border: 1px solid black;
+        margin: 10px;
+    }
+    .demo-header {
+        text-align: center;
+    }
+    .content-box {
+        display: flex;
+        justify-content: space-evenly;
+        margin: 4rem 5rem;
+        padding: 4rem 5rem;
+        gap: 100px;
+        border: 1px solid green;
+    }
+    .paragraph-box {
+        font-size: 2.5rem;
+        background: yellow;
+    }
+</style>
+
+<div class="outer-box">
+    <h1 class="demo-header">{{ section.settings.header }}</h1>
+    <div class="content-box">
+        <div class="paragraph-box">{{ section.settings.paragraph }}</div>
+        <div class="image-box">
+           {{ section.settings.image | image_url: width: 843| image_tag }}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Demo section",
+    "tag": "section",
+    "class": "demo-section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "header",
+            "info": "Enter your header title",
+            "label": "Heading",
+            "default": "Demo heading"
+        },
+        {
+            "type": "text",
+            "id": "paragraph",
+            "info": "Enter Paragraph",
+            "label": "Paragraph"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "info": "Choose image",
+            "label": "Select image"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Demo section"
+        }
+    ]
+}
+{% endschema %}

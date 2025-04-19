@@ -99,10 +99,19 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "sanjeev_demo_section_Y8KixM": {
+      "type": "sanjeev-demo-section",
+      "settings": {
+        "header": "Demo heading",
+        "paragraph": "A 200-word essay is a short piece. It might be assigned by a school teacher to test the student’s knowledge of the topic and their ability to formulate thoughts concisely. The most common genres for texts of 200 to 250 words are a discussion board post and a personal statement for a college application.Porter’s factor conditions explaining Switzerland’s victory of America’s Cup sailing competition in 2005 Porter’s factor conditions for countries’ competitiveness are demand condition, related industries, firm’s strategy, and the level of rivalry. Australia has been challenged for the trophy and there was an increased demand for the country to produce results...Porter’s factor conditions explaining Switzerland’s victory of America’s Cup sailing competition in 2005 Porter’s factor conditions for countries’ competitiveness are demand condition, related industries, firm’s strategy, and the level of rivalry. Australia has been challenged for the trophy and there was an increased demand for the country to produce results...Porter’s factor conditions explaining Switzerland’s victory of America’s Cup sailing competition in 2005 Porter’s factor conditions for countries’ competitiveness are demand condition, related industries, firm’s strategy, and the level of rivalry. Australia has been challenged for the trophy and there was an increased demand for the country to produce results...",
+        "image": "shopify://shop_images/friends-backpacking-together.jpg"
+      }
     }
   },
   "order": [
     "main",
-    "related-products"
+    "related-products",
+    "sanjeev_demo_section_Y8KixM"
   ]
 }
