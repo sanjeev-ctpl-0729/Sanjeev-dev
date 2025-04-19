@@ -1,0 +1,640 @@
+<style>
+  .sticky-atc {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 85px;
+    background: #fdf8f4;
+    padding: 10px 15px;
+    display: grid;
+    place-content: center;
+    align-items: center;
+    gap: 10px;
+    border-top: 0.5px solid #a88275;
+    box-shadow: 0px -1px 2px 0px #502c1e40;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 25px;
+  }
+
+  .sticky-atc.hidden {
+    transform: translateY(400%);
+  }
+
+  .sticky-container {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 17px;
+    width: 100%;
+  }
+  .sticky-container select:first-child {
+    width: 348px;
+    height: 35px;
+  }
+  .add-to-cart-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .sticky-container select,
+  .quantity-selector {
+    border: 0.5px solid #a88275;
+    padding: 8px 15px;
+    border-radius: 60px;
+    font-size: 14px;
+    background: #fff;
+  }
+  .quantity-selector {
+    height: 35px;
+    width: 145px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .qty-btn {
+    background: none;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .quantity-selector input {
+    text-align: center;
+    width: 80%;
+  }
+
+  #sticky-atc-btn,
+  .sticky-notify-btn {
+    width: 348px;
+    height: 36px;
+    background: rgb(166, 88, 88);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'Futura-PT-Bold';
+    font-weight: 700;
+    line-height: 100%;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: lowercase;
+    justify-content: center;
+  }
+  #sticky-atc-btn:hover {
+    background: #502c1e;
+  }
+  .custom-dropdown {
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    border: 0.5px solid #a88275;
+    padding: 5px 10px;
+    border-radius: 60px;
+    width: 195px;
+    height: 35px;
+    background: #ffffff;
+  }
+  .custom-dropdown:first-child {
+    width: 348px;
+  }
+
+  .dropdown-selected {
+    padding: 0;
+    border-radius: 5px;
+    text-align: left;
+    font-family: 'Futura-PT-Book';
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.25px;
+    vertical-align: middle;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #502c1e;
+  }
+
+  .dropdown-options {
+    display: none;
+    position: absolute;
+    bottom: 34px;
+    max-height: 140px;
+    left: 0;
+    width: 100%;
+    background: white;
+    max-height: 200px;
+    overflow-y: auto;
+    border-radius: 10px;
+    box-shadow: 1px -2px 4px 0px #502c1e40;
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 1px;
+    cursor: pointer;
+    border-bottom: 0.5px solid #fdf8f4;
+    gap: 8px;
+    padding-left: 10px;
+    color: #502c1e;
+  }
+
+  .color-swatch {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .custom-dropdown-icon {
+    position: absolute;
+    right: 12px;
+    bottom: 4px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .custom-dropdown-icon.rotate {
+    transform: rotate(180deg);
+  }
+  @media screen and (max-width: 1328px) and (min-width: 431px) {
+    .sticky-container {
+      flex-wrap: wrap;
+    }
+    #sticky-atc-btn {
+      width: 300px;
+    }
+    custom-dropdown:first-child {
+      width: 300px;
+    }
+    .sticky-atc {
+      height: 110px;
+    }
+  }
+
+  @media screen and (max-width: 1081px) and (min-width: 965px) {
+    #sticky-atc-btn {
+      width: 300px;
+    }
+  }
+  @media screen and (max-width: 706px) {
+    .sticky-atc {
+      height: unset;
+    }
+  }
+  @media screen and (max-width: 430px) {
+    #sticky-atc-btn {
+      width: 60%;
+    }
+    .sticky-container select:first-child {
+      width: 100%;
+    }
+    .quantity-selector {
+      width: 40%;
+    }
+    .sticky-container {
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .custom-dropdown {
+      width: 169px;
+    }
+    .sticky-atc {
+      padding: 10px 40px;
+    }
+    .dropdown-item.unavailable {
+      cursor: not-allowed;
+      opacity: 0.3;
+    }
+  }
+
+  .div-option-disabled {
+    pointer-events: none; /* Prevent mouse interaction */
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .dropdown-item.selected {
+    background-color: #fdf8f4;
+    border: 2px solid #a88275;
+  }
+
+  .dropdown-options::-webkit-scrollbar {
+    width: 10px;
+    height: 86.94px;
+  }
+
+  .dropdown-options::-webkit-scrollbar-thumb {
+    background: #f0e4da;
+    border-radius: 10px;
+  }
+</style>
+
+<div id="sticky-add-to-cart" class="sticky-atc hidden">
+  <div class="sticky-container">
+    {% for option in product.options_with_values %}
+      {% assign optionName = option.name | downcase %}
+      <div
+        class="custom-dropdown {{ optionName }}-dropdown"
+        data-option-name="{{ optionName }}"
+        data-option-index="{{ forloop.index0 }}"
+      >
+        <div class="dropdown-selected">Choose {{ option.name }}</div>
+        <div class="custom-dropdown-icon">
+          <svg width="9" height="5" viewBox="0 0 9 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 0.750001L4.84995 4.09606C4.75713 4.19463 4.63125 4.25 4.5 4.25C4.36875 4.25 4.24287 4.19463 4.15005 4.09606L1 0.75" stroke="#502C1E" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="dropdown-options">
+          {% for value in option.values %}
+            {%- assign swatch_config = settings.color_swatch_config | newline_to_br | split: '<br />' -%}
+
+            {%- assign value_downcase = value | downcase -%}
+            {%- assign swatch_style = '--swatch-background: ' | append: value_downcase -%}
+            {%- for swatch_item in swatch_config -%}
+              {%- assign swatch_parts = swatch_item | split: ':' -%}
+              {%- assign swatch_name = swatch_parts.first | downcase | strip -%}
+
+              {%- if value_downcase == swatch_name -%}
+                {%- assign swatch_value = swatch_parts.last | strip -%}
+
+                {%- if swatch_value contains '#' -%}
+                  {%- assign swatch_style = '--swatch-background: ' | append: swatch_value -%}
+                {%- elsif images[swatch_value] != blank -%}
+                  {%- assign swatch_image = images[swatch_value] | image_url: width: 72 -%}
+                  {%- assign swatch_style = '--swatch-background: url(' | append: swatch_image | append: ')' -%}
+                {%- endif -%}
+
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+            <div class="dropdown-item" data-name="{{ optionName }}" data-value="{{ value }}">
+              {% if optionName == 'color' %}
+                <span class="color-swatch" style="{{ swatch_style }}"></span>
+              {% endif %}
+              <p>{{ value }}</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+    <div class="add-to-cart-wrapper">
+      <div class="quantity-selector">
+        <button class="qty-btn" id="decrease-qty">-</button>
+        <input type="number" placeholder="1" id="sticky-qty" value="1" min="1">
+        <button class="qty-btn" id="increase-qty">+</button>
+      </div>
+      <button id="sticky-atc-btn">
+        add to cart -$
+        <span id="sticky-price">{{ product.selected_or_first_available_variant.price | money_without_currency }}</span>
+      </button>
+      <button class="sticky-notify-btn button">notify me when available</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const stickyBar = document.getElementById("sticky-add-to-cart");
+      const priceContainer = document.getElementById("sticky-price");
+      const qtyInput = document.getElementById("sticky-qty");
+  
+      let productVariants = {{ product.variants | json }};
+      let productFormATCBTN = document.querySelector(".Product.add-to-cart.button");
+      let productFormNotifyBTN = document.querySelector(".Product-notify__btn.button");    
+  
+      function isElementInViewport(el) {
+          if (!el) return false;
+          const rect = el.getBoundingClientRect();
+          return rect.bottom > 0 && rect.top < window.innerHeight;
+      }
+  
+      // Handle sticky atc
+      function toggleSticky() {
+          if (!isElementInViewport(productFormATCBTN) && !isElementInViewport(productFormNotifyBTN)) {
+              stickyBar.classList.remove("hidden");
+          } else {
+              stickyBar.classList.add("hidden");
+          }
+      }
+  
+      window.addEventListener("scroll", toggleSticky);
+      toggleSticky();
+  
+      // Handle quantity change and sync
+      let plus__element = document.querySelector(".QuantitySelector_increment").querySelector('input');
+      let minus__element = document.querySelector(".QuantitySelector_decrement").querySelector('input');
+      let quantityPDP = document.querySelector(".QuantitySelector_text").querySelector('input');
+      
+      document.getElementById("increase-qty").addEventListener("click", function () {
+          qtyInput.value = parseInt(qtyInput.value) + 1; 
+          plus__element.click();
+          updatePrice();
+      });
+      
+      document.getElementById("decrease-qty").addEventListener("click", function () {
+          if (qtyInput.value > 1) {
+              qtyInput.value = parseInt(qtyInput.value) - 1;
+              minus__element.click();
+              updatePrice();
+          }
+      });
+  
+      qtyInput.addEventListener("input", () => {
+          let val = parseInt(qtyInput.value);
+          quantityPDP.value = val;
+          updatePrice();
+      });
+  
+      plus__element.addEventListener('click', () => {
+        setTimeout(() => {
+          qtyInput.value = quantityPDP.value;
+        }, 0);
+      });
+  
+      minus__element.addEventListener('click', () => {
+        setTimeout(() => {
+          qtyInput.value = quantityPDP.value;
+        }, 0);
+      });
+  
+      quantityPDP.addEventListener("input", () => {
+          let val = parseInt(quantityPDP.value);
+          qtyInput.value = val;
+          updatePrice();
+      });
+  
+      // Handle notify sync
+      document.querySelector(".sticky-notify-btn.button").addEventListener("click", function () {
+        productFormNotifyBTN.click();
+      });
+  
+      // Handle both Color and Other Variant Selections
+      document.querySelectorAll(".custom-dropdown").forEach(dropdown => {
+          let selected = dropdown.querySelector(".dropdown-selected");
+          let optionsContainer = dropdown.querySelector(".dropdown-options");
+          let customIcon = dropdown.querySelector(".custom-dropdown-icon");
+  
+          selected.addEventListener("click", function () {
+            if(optionsContainer.style.display === "block"){
+              customIcon.classList.remove("rotate");
+            }
+            else {
+              customIcon.classList.add("rotate");
+            }
+              optionsContainer.style.display = optionsContainer.style.display === "block" ? "none" : "block";
+          });
+  
+          customIcon.addEventListener("click", function () {
+            if(optionsContainer.style.display === "block") {
+              customIcon.classList.remove("rotate");
+            }else {
+              customIcon.classList.add("rotate");
+            }
+              optionsContainer.style.display = optionsContainer.style.display === "block" ? "none" : "block";
+              
+          });
+  
+          dropdown.querySelectorAll(".dropdown-item").forEach(item => {
+              item.addEventListener("click", function () {
+                
+                  // Selected color border & background
+                  const name = item.getAttribute('data-name');
+                  if (name == 'color') {
+                    document.querySelectorAll(`.dropdown-item[data-name="${name}"]`).forEach(i => {
+                      i.classList.remove('selected');
+                    });
+                    item.classList.add('selected');
+                  }
+                
+                  let selectedValue = item.getAttribute("data-value");
+                  
+                  // Check if it's a color variant
+                  let colorSwatchElm = item.querySelector(".color-swatch");
+                  let colorSwatch;
+  
+                  if(colorSwatchElm)
+                    colorSwatch = colorSwatchElm.cloneNode(true);
+                  let selectedText = document.createElement("p"); // Create a paragraph element
+                  selectedText.textContent = selectedValue; // Set the text content
+  
+                  selected.innerHTML = "";
+                  if (colorSwatch) {
+                      selected.appendChild(colorSwatch);
+                  }
+                  selected.appendChild(selectedText)
+  
+                  selected.setAttribute("data-selected-value", selectedValue);
+                  optionsContainer.style.display = "none";
+                  customIcon.classList.remove("rotate");
+  
+                  const nameValue = item.getAttribute('data-name');
+                  if (nameValue == "color") {
+                    let color__variants__parent = document.querySelector(".Product__swatch-flex.m-dropdown-options");
+                    let color__variants = color__variants__parent.querySelectorAll(".color-swatch");
+                    color__variants.forEach(el => {
+                       let input = el.previousElementSibling;
+                       if (input.value === selectedValue) {
+                         el.click();
+                         setTimeout(() => {
+                           updateSize ();
+                         }, 0);
+                       }
+                    });
+                  } else {
+                      document.querySelectorAll(".m-dropdown-options.variant-picker__option-values").forEach(element => {
+                      let variants = element.querySelectorAll(".block-swatch");
+                      variants.forEach(el => {
+                        let input = el.previousElementSibling;
+                        if (input.value === selectedValue) {
+                        el.click();
+                          setTimeout(() => {
+                            updateLid ();
+                          }, 0);
+                        }
+                      })
+                    })
+                  }                
+                  updatePrice(); // Update price when selection changes
+              });
+          });
+  
+          // Close dropdown when clicking outside
+          document.addEventListener("click", function (e) {
+              if (!dropdown.contains(e.target)) {
+                  optionsContainer.style.display = "none";
+                  customIcon.classList.remove("rotate");
+              }
+          });
+      });
+  
+      let color__variants__parent = document.querySelector(".Product__swatch-flex.m-dropdown-options");
+      if (color__variants__parent) {
+        let color__variants = color__variants__parent.querySelectorAll(".color-swatch");
+          color__variants.forEach(el => {
+           let input = el.previousElementSibling;
+           el.addEventListener("click", () => {
+              let colorSwatch = el.cloneNode(true);
+              let selectedText = document.createElement("p");
+              selectedText.textContent = input.value;
+              let selected = document.querySelector(".custom-dropdown.color-dropdown .dropdown-selected");
+              selected.innerHTML = "";
+              selected.appendChild(colorSwatch);
+              selected.appendChild(selectedText);
+              selected.setAttribute("data-selected-value", input.value);
+              setTimeout(() => {
+                updateSize ();
+              }, 0);
+              updatePrice();
+              selectedItemCheck (input.value);
+          });
+          if (input.checked) {       
+            let colorSwatch = el.cloneNode(true);
+            let selectedText = document.createElement("p");
+            selectedText.textContent = input.value;
+            let selected = document.querySelector(".custom-dropdown.color-dropdown .dropdown-selected");
+            selected.innerHTML = "";
+            selected.appendChild(colorSwatch);
+            selected.appendChild(selectedText);
+            selected.setAttribute("data-selected-value", input.value);
+            updatePrice();
+          }
+       });
+      }
+  
+      function updateSize () {
+        let sizes = document.querySelector(".variant-picker__option-values.size").querySelectorAll(".block-swatch");
+          if(sizes) {
+            sizes.forEach(el => {
+            let input = el.previousElementSibling;
+            if (input.checked) {
+              let selectedText = document.createElement("p");
+              selectedText.textContent = input.value;
+              let selected = document.querySelector(".custom-dropdown.size-dropdown .dropdown-selected");
+              let selectedTwo = document.querySelector(".custom-dropdown.choose.your.lid-dropdown .dropdown-selected");
+              selected.innerHTML = "";
+              selected.appendChild(selectedText);
+              selected.setAttribute("data-selected-value", input.value);
+              updatePrice();
+            }
+          });
+         }
+        }
+    
+        let sizes = document.querySelector(".variant-picker__option-values.size").querySelectorAll(".block-swatch");
+        if(sizes) {
+          sizes.forEach(el => {
+          let input = el.previousElementSibling;
+          el.addEventListener("click", () => {
+            let selectedText = document.createElement("p");
+            selectedText.textContent = input.value;
+            let selected = document.querySelector(".custom-dropdown.size-dropdown .dropdown-selected");
+            let selectedTwo = document.querySelector(".custom-dropdown.choose.your.lid-dropdown .dropdown-selected");
+            selected.innerHTML = "";
+            selected.appendChild(selectedText);
+            selected.setAttribute("data-selected-value", input.value);
+            setTimeout(() => {
+              updateLid ();
+            }, 0);
+            updatePrice();
+          });
+          if (input.checked) {
+            let selectedText = document.createElement("p");
+            selectedText.textContent = input.value;
+            let selected = document.querySelector(".custom-dropdown.size-dropdown .dropdown-selected");
+            let selectedTwo = document.querySelector(".custom-dropdown.choose.your.lid-dropdown .dropdown-selected");
+            selected.innerHTML = "";
+            selected.appendChild(selectedText);
+            selected.setAttribute("data-selected-value", input.value);
+            updatePrice();
+          }
+        });
+        }
+  
+       function updateLid () {
+         let lids = document.querySelector(".variant-picker__option-values.choose.your.lid").querySelectorAll(".block-swatch");
+           if (lids) {
+            lids.forEach(el => {
+            let input = el.previousElementSibling;
+            if (input.checked) {
+              let selectedText = document.createElement("p");
+              selectedText.textContent = input.value;
+              let selected = document.querySelector(".custom-dropdown.lid-dropdown .dropdown-selected");
+              selected.innerHTML = "";
+              selected.appendChild(selectedText);
+              selected.setAttribute("data-selected-value", input.value);
+              updatePrice();
+            }
+          });
+         }
+        }
+  
+        let lids = document.querySelector(".variant-picker__option-values.choose.your.lid").querySelectorAll(".block-swatch");
+        if (lids) {
+          lids.forEach(el => {
+          let input = el.previousElementSibling;
+          el.addEventListener("click", () => {
+            let selectedText = document.createElement("p");
+            selectedText.textContent = input.value;
+            let selected = document.querySelector(".custom-dropdown.lid-dropdown .dropdown-selected");
+            selected.innerHTML = "";
+            selected.appendChild(selectedText);
+            selected.setAttribute("data-selected-value", input.value);
+            setTimeout(() => {
+              updateLid ();
+            }, 0);
+            updatePrice();
+          });
+          if (input.checked) {
+            let selectedText = document.createElement("p");
+            selectedText.textContent = input.value;
+            let selected = document.querySelector(".custom-dropdown.lid-dropdown .dropdown-selected");
+            selected.innerHTML = "";
+            selected.appendChild(selectedText);
+            selected.setAttribute("data-selected-value", input.value);
+            updatePrice();
+          }
+         });
+        } 
+  
+      // Default selected color variant background highlight
+      const selectedColorText = document.querySelector(".custom-dropdown.color-dropdown .dropdown-selected p")?.innerText?.toLowerCase();
+      selectedItemCheck (selectedColorText)
+  
+      function selectedItemCheck (selectedItem) {
+        document.querySelectorAll(".color-dropdown .dropdown-item").forEach(item => {
+        let value = item.getAttribute("data-value")?.toLowerCase();
+          if (value == selectedItem) {
+            selectedColorStyle (item);
+          }
+        });
+      }
+      
+      function selectedColorStyle (item) {
+        document.querySelectorAll(`.dropdown-item[data-name="color"]`).forEach(i => {
+          i.classList.remove('selected');
+        });
+        item.classList.add('selected');
+      }
+  
+      function updatePrice() {
+          let selectedOptions = Array.from(document.querySelectorAll(".custom-dropdown .dropdown-selected"))
+              .map(select => select.getAttribute("data-selected-value"));
+  
+          let matchingVariant = productVariants.find(variant => 
+              selectedOptions.every((value, index) => variant[`option${index + 1}`] === value)
+          );
+  
+          if (matchingVariant) {
+              let quantity = parseInt(qtyInput.value) || 1;
+              let totalPrice = (matchingVariant.price * quantity) / 100;
+              priceContainer.textContent = `${totalPrice.toFixed(2)}`;
+          }
+      }
+  });
+</script>
