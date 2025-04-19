@@ -1,0 +1,273 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Browse our latest products",
+            "heading_size": "h0"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "button"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/homeshure2.jpg",
+        "image_overlay_opacity": 40,
+        "image_height": "large",
+        "desktop_content_position": "bottom-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured products",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 20,
+        "padding_bottom": 40
+      }
+    },
+    "custom_parallax_texWqV": {
+      "type": "custom-parallax",
+      "blocks": {
+        "text_AYjYnY": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/partners-shure.jpg",
+            "txt1-hd1": "ABOUT US",
+            "parallax-h": "h2",
+            "txt1-hd2": "Good sound is fine for some people. But at Shure, we’re only interested in delivering sound experiences that immerse and inspire you.",
+            "parallax-subh": "h3",
+            "par1_showbutton": false,
+            "par1_button_label": "",
+            "par1_button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_AYjYnY"
+      ],
+      "settings": {
+        "paral-full": true,
+        "par_img_sz": "400",
+        "par_hd_sz": "55",
+        "par_subhd_sz": "25",
+        "par_button_sz": "25",
+        "par_letter_sp": "1",
+        "par_txt_align": "left",
+        "par_txt_top_pos": "50",
+        "par-en-over": true,
+        "color_over": "#000000",
+        "par_opacity": 31
+      }
+    },
+    "testimonial_XkC6TF": {
+      "type": "testimonial",
+      "blocks": {
+        "column_t4fmzU": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/partners-shure.jpg",
+            "toggle_image": true,
+            "title": "",
+            "text": "<p><em>Shure Partners: Apple, Audinate, Chief, Cisco, Crestron, Microsoft, Polycom, Rycote, Tieline, Yamaha, Zoom</em></p>",
+            "stars_count": "4.5",
+            "toggle_review_stars": true
+          }
+        },
+        "column_E8N3Vx": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/history-shure.jpg",
+            "toggle_image": true,
+            "title": "",
+            "text": "<p><em>From a humble start as a radio parts wholesaler in 1925 Shure has grown to become a global leader in audio electronics. Shure products have been…</em></p>",
+            "stars_count": "5",
+            "toggle_review_stars": true
+          }
+        },
+        "column_76mP3w": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/careers-shure.jpg",
+            "toggle_image": true,
+            "title": "",
+            "text": "<p><em>If you're interested in shaping the future of audio, then consider joining our band.</em></p>",
+            "stars_count": "5",
+            "toggle_review_stars": true
+          }
+        }
+      },
+      "block_order": [
+        "column_t4fmzU",
+        "column_E8N3Vx",
+        "column_76mP3w"
+      ],
+      "custom_css": [],
+      "settings": {
+        "title": "More about Shure",
+        "subtitle": "",
+        "heading_alignment": "center",
+        "image_width": "full",
+        "image_ratio": "circle",
+        "column_alignment": "left",
+        "background_style": "primary",
+        "swipe_on_mobile": false,
+        "star_color": "#121212",
+        "testimonial_background": "#f7f7f7",
+        "testimonial_section_background": "#eaeaea"
+      }
+    },
+    "testinomial_video_XcKkgV": {
+      "type": "testinomial-video",
+      "blocks": {
+        "testimonial_xFRRa6": {
+          "type": "testimonial",
+          "settings": {
+            "youtube_video": "https://youtu.be/TtS5DZ0FRKI",
+            "star_rating": 4,
+            "title": "<p>Shure SLXD5 & SLXD3: More Options for Excellent Audio!</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "testimonial_G4etjH": {
+          "type": "testimonial",
+          "settings": {
+            "youtube_video": "https://youtu.be/NC6yDrfx8ak",
+            "star_rating": 5,
+            "title": "<p>New Launch - SLX-D Portable Digital Wireless System with Receiver and Plug-On Transmitter</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "testimonial_Dh8Jf9": {
+          "type": "testimonial",
+          "settings": {
+            "youtube_video": "https://youtu.be/DpNvbvQeEiE",
+            "star_rating": 5,
+            "title": "<p>Shure Microflex Advance MXA920 Ceiling Array Microphone</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_xFRRa6",
+        "testimonial_G4etjH",
+        "testimonial_Dh8Jf9"
+      ],
+      "settings": {
+        "title": "Top Rated and Recommended",
+        "per_row": 3,
+        "video_style": "control_bar",
+        "desktop_display": "grid",
+        "mobile_display": "grid",
+        "text_size": 100,
+        "heading_color": "#121212",
+        "text_color": "#121212",
+        "star_color": "#121212",
+        "play_button_color": "#ffffff",
+        "border_color": "#121212",
+        "border_width": 1,
+        "border_radius": 13,
+        "base_width": 85,
+        "max_width": "",
+        "inner_padding": 20,
+        "outer_margin": 40
+      }
+    },
+    "custom_faq_DcGf3T": {
+      "type": "custom-faq",
+      "blocks": {
+        "faq_item_btbt3n": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "Items can be returned within 30 days in their original condition. Contact us to initiate a return."
+          }
+        },
+        "faq_item_GW3qTi": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "Standard shipping takes 3-5 business days. Expedited options are available."
+          }
+        },
+        "faq_item_fBTfG3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer international shipping?",
+            "answer": "Yes, we ship internationally. Costs vary and are calculated at checkout."
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_btbt3n",
+        "faq_item_GW3qTi",
+        "faq_item_fBTfG3"
+      ],
+      "settings": {
+        "faq_title": "Frequently Asked Questions"
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "featured_collection",
+    "custom_parallax_texWqV",
+    "testimonial_XkC6TF",
+    "testinomial_video_XcKkgV",
+    "custom_faq_DcGf3T"
+  ]
+}

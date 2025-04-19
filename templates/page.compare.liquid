@@ -1,0 +1,408 @@
+<div class="page-width">
+  
+            <div class="product-comparison-section">
+              <div class="comparison-header">
+                <div class="products-list">
+                  {% for product in collections.all.products limit:6 %}
+                    <div class="product-comparison-item" data-product-id="{{ product.id }}">
+                      <div class="product-image-container">
+                        <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+                        <div class="view-button">
+                          <a href="{{ product.url }}">View</a>
+                        </div>
+                      </div>
+                      <div class="product-info">
+                        <h3>{{ product.title }}</h3>
+                        <p>{{ product.vendor }}</p>
+                        <p>{{ product.price | money }}</p>
+                        <label>
+                          <input type="checkbox" class="add-to-compare" data-product-id="{{ product.id }}">
+                          ADD TO COMPARE
+                        </label>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+              <button id="compare-button" style="display: none;">
+                Compare Products <span id="compare-count">0</span>
+              </button>
+            </div>
+
+  
+  
+            <!-- Comparison Table Placeholder -->
+            <div id="comparison-table-container" style="display: none;">
+              <h3>Comparison Table</h3>
+              <table id="comparison-table">
+                <thead>
+                  <tr>
+                    <th>Feature</th>
+                    <!-- Dynamic product columns will be added here -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Dynamic product features and values will be added here -->
+                </tbody>
+              </table>
+            </div>
+  
+</div>
+
+<style>
+/* General styling for the product comparison section */
+.product-comparison-section {
+  padding: 20px;
+}
+
+/* Styling for the comparison header */
+.comparison-header {
+  margin-bottom: 20px;
+}
+
+/* Grid layout for products */
+.products-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; /* Four columns for larger screens */
+  gap: 20px; /* Space between products */
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 1200px) {
+  .products-list {
+    grid-template-columns: 1fr 1fr 1fr; /* Three columns for medium screens */
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .products-list {
+    grid-template-columns: 1fr 1fr; /* Two columns for smaller screens */
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .products-list {
+    grid-template-columns: 1fr; /* One column for mobile screens */
+  }
+}
+
+/* Styling for individual product items */
+.product-comparison-item {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+}
+
+/* Styling for product images */
+.product-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.product-image-container img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease;
+}
+
+.product-comparison-item:hover img {
+  transform: scale(1.05);
+}
+  
+.view-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  background-color: black; /* Black background */
+  color: white; /* White text */
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none; /* No underline */
+}
+
+.view-button a {
+  color: white; /* Ensure link text is white */
+  text-decoration: none; /* No underline for link */
+}
+
+.product-comparison-item:hover .view-button {
+  display: block;
+}
+
+.product-info h3, .product-info p {
+  margin: 10px 0;
+}
+
+.add-to-compare {
+  display: none;
+}
+
+.add-to-compare + label {
+  cursor: pointer;
+  display: inline-block;
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.add-to-compare:checked + label {
+  background-color: #006400;
+  color: #fff;
+}
+
+#compare-button {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 15px 20px;
+  background-color: #006400;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+#compare-button:hover {
+  background-color: #004d00;
+}
+
+/* Styles for the comparison table */
+#comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#comparison-table th, #comparison-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+#comparison-table th {
+  background-color: #f5f5f5;
+}
+
+#comparison-table img {
+  max-width: 100px;
+  height: auto;
+}
+
+/* Styles for the comparison modal popup */
+.comparison-modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  overflow: auto; /* Enable scrolling if content exceeds viewport */
+}
+
+.modal-content {
+  background-color: #fefefe; /* Modal background color */
+  margin: 4% auto; /* Center modal vertically and horizontally */
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 5px;
+  max-width: 50%; /* Limit maximum width */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Add a shadow */
+  position: relative;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  text-decoration: none;
+}
+
+.modal-body {
+  text-align: center;
+}
+
+.modal-body .product-info label{
+  display: none;
+}
+
+.modal-body h2 {
+  margin-bottom: 20px;
+}
+
+.comparison-results {
+  text-align: left;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+
+}
+
+/* Additional CSS for remove button */
+.remove-from-compare {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #aaa;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.remove-from-compare:hover,
+.remove-from-compare:focus{
+  color: black;
+  text-decoration: none;
+}
+
+.modal-header{
+  background-color: black;
+  padding: 1px;
+  border-radius: 10px;
+  height:50px
+}
+
+.modal-header h3 {
+  text-align: center;
+  color: white;
+  margin-top: 12px;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const compareButtons = document.querySelectorAll('.add-to-compare');
+  let comparisonList = [];
+
+  compareButtons.forEach(button => {
+    button.addEventListener('change', function() {
+      const productId = this.getAttribute('data-product-id');
+      if (this.checked) {
+        comparisonList.push(productId);
+      } else {
+        comparisonList = comparisonList.filter(id => id !== productId);
+      }
+      updateCompareButton();
+    });
+  });
+
+  function updateCompareButton() {
+    const compareButton = document.getElementById('compare-button');
+    const compareCount = document.getElementById('compare-count');
+    compareCount.textContent = comparisonList.length;
+
+    if (comparisonList.length >= 1) {
+      compareButton.style.display = 'block';
+    } else {
+      compareButton.style.display = 'none';
+      document.getElementById('comparison-table-container').style.display = 'none';
+    }
+  }
+
+  document.getElementById('compare-button').addEventListener('click', function() {
+    if (comparisonList.length >= 2) {
+      showComparisonTable();
+      scrollToComparisonTable();
+    } else {
+      alert('At least 2 products are required for product comparison');
+    }
+  });
+
+  function showComparisonTable() {
+    const tableContainer = document.getElementById('comparison-table-container');
+    const tableHeadRow = document.querySelector('#comparison-table thead tr');
+    const tableBody = document.querySelector('#comparison-table tbody');
+
+    // Clear previous comparison table
+    tableHeadRow.innerHTML = '<th>Feature</th>';
+    tableBody.innerHTML = '';
+
+    const attributes = [
+      { name: 'Image', key: 'image' },
+      { name: 'Title', key: 'title' },
+      { name: 'Vendor', key: 'vendor' },
+      { name: 'Price', key: 'price' },
+      // Add more attributes as needed
+    ];
+
+    // Add product titles to the table header
+    comparisonList.forEach(productId => {
+      const productItem = document.querySelector(`.product-comparison-item[data-product-id="${productId}"]`);
+      const productTitle = productItem.querySelector('h3').textContent;
+
+      const th = document.createElement('th');
+      th.textContent = productTitle;
+      tableHeadRow.appendChild(th);
+    });
+
+    // Add rows for each attribute
+    attributes.forEach(attribute => {
+      const tr = document.createElement('tr');
+      const td = document.createElement('td');
+      td.textContent = attribute.name;
+      tr.appendChild(td);
+
+      comparisonList.forEach(productId => {
+        const productItem = document.querySelector(`.product-comparison-item[data-product-id="${productId}"]`);
+        const productValue = getProductAttributeValue(productItem, attribute.key);
+
+        const td = document.createElement('td');
+        td.innerHTML = productValue;
+        tr.appendChild(td);
+      });
+
+      tableBody.appendChild(tr);
+    });
+
+    tableContainer.style.display = 'block';
+  }
+
+  function getProductAttributeValue(productItem, key) {
+    switch (key) {
+      case 'image':
+        return productItem.querySelector('img').outerHTML;
+      case 'title':
+        return productItem.querySelector('h3').textContent;
+      case 'vendor':
+        return productItem.querySelector('.product-info p:nth-child(2)').textContent;
+      case 'price':
+        return productItem.querySelector('.product-info p:nth-child(3)').textContent;
+      default:
+        return '';
+    }
+  }
+
+
+  function scrollToComparisonTable() {
+    const comparisonTableContainer = document.getElementById('comparison-table-container');
+    comparisonTableContainer.scrollIntoView({ behavior: 'smooth' });
+  }
+  
+  
+});
+  
+</script>
