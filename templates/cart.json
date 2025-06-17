@@ -38,10 +38,30 @@
         "padding_top": 20,
         "padding_bottom": 40
       }
+    },
+    "17501468541aea71ab": {
+      "type": "apps",
+      "blocks": {
+        "pc_product_options_cart_page_customizer_UUQQrX": {
+          "type": "shopify://apps/pc-product-options/blocks/cart-page-customizer/6857ca6c-35eb-4b6f-9d58-a039f31d9406",
+          "settings": {
+            "heading": "Product Customizer - Cart Page",
+            "pc_cart_advanced_custom_css": "",
+            "pc_cart_advanced_custom_js": ""
+          }
+        }
+      },
+      "block_order": [
+        "pc_product_options_cart_page_customizer_UUQQrX"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
     "cart-items",
-    "cart-footer"
+    "cart-footer",
+    "17501468541aea71ab"
   ]
 }
