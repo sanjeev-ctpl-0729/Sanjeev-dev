@@ -260,6 +260,14 @@
       "settings": {
         "faq_title": "Frequently Asked Questions"
       }
+    },
+    "demo_training_section_XcB4q7": {
+      "type": "demo-training-section",
+      "name": "Demo training section",
+      "settings": {
+        "heading-text": "Demo training section",
+        "paragraph": "Creating this section for demo"
+      }
     }
   },
   "order": [
@@ -268,6 +276,7 @@
     "custom_parallax_texWqV",
     "testimonial_XkC6TF",
     "testinomial_video_XcKkgV",
-    "custom_faq_DcGf3T"
+    "custom_faq_DcGf3T",
+    "demo_training_section_XcB4q7"
   ]
 }
