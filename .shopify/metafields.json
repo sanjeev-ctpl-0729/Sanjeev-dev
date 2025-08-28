@@ -1,191 +1,176 @@
 {
-  "article": [],
+  "article": [
+    {
+      "key": "youtube_video_url",
+      "namespace": "my_fields",
+      "name": "youtube video url",
+      "description": "add video url here",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    }
+  ],
   "blog": [],
-  "collection": [],
+  "collection": [
+    {
+      "key": "lowest_price",
+      "namespace": "my_fields",
+      "name": "lowest price",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "banner",
+      "namespace": "custom",
+      "name": "banner",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "hide_from_store_front_search",
+      "namespace": "custom",
+      "name": "hide from store front search",
+      "description": "Hide from store front search results",
+      "type": {
+        "name": "number_integer",
+        "category": "NUMBER"
+      }
+    }
+  ],
   "company": [],
   "company_location": [],
   "location": [],
-  "market": [],
-  "order": [],
-  "page": [],
+  "market": [
+    {
+      "key": "section_id",
+      "namespace": "custom",
+      "name": "section id",
+      "description": "unique id to be added to shopify ",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    }
+  ],
+  "order": [
+    {
+      "key": "estimated_shipping_date",
+      "namespace": "fulfillment_network",
+      "name": "Estimated Shipping Date",
+      "description": "Shopify Logistics: The estimated date that the order will be picked up by the carrier.",
+      "type": {
+        "name": "date",
+        "category": "DATE_TIME"
+      }
+    },
+    {
+      "key": "estimated_delivery_date",
+      "namespace": "fulfillment_network",
+      "name": "Estimated Delivery Date",
+      "description": "Shopify Logistics: The estimated date that the order will be delivered by the carrier.",
+      "type": {
+        "name": "date",
+        "category": "DATE_TIME"
+      }
+    },
+    {
+      "key": "item_picked_up_by_the_carrier",
+      "namespace": "fulfillment_network",
+      "name": "Picked Up By The Carrier",
+      "description": "Shopify Logistics: The date and time in which the package was picked up by the carrier.",
+      "type": {
+        "name": "date_time",
+        "category": "DATE_TIME"
+      }
+    }
+  ],
+  "page": [
+    {
+      "key": "hide_from_store_front_search",
+      "namespace": "custom",
+      "name": "hide from store front search",
+      "description": "Hide pages from search results",
+      "type": {
+        "name": "number_integer",
+        "category": "NUMBER"
+      }
+    }
+  ],
   "product": [
     {
-      "key": "target-gender",
-      "namespace": "shopify",
-      "name": "Target gender",
-      "description": "Identifies the intended gender for a product, such as female, male or unisex",
+      "key": "percent",
+      "namespace": "bulk_discount",
+      "name": "Bulk Discount Percentage",
+      "description": "Discount percentage for each bulk pack",
       "type": {
-        "name": "list.metaobject_reference",
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "quantity",
+      "namespace": "bulk_discount",
+      "name": "Bulk Discount Quantity",
+      "description": "Case pack quantity break points. ",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "has_bulk_discounts",
+      "namespace": "bulk_discount",
+      "name": "Qualifying Variant Title(s)",
+      "description": "Explains which variants are using bulk discount for each product based off the variant title. ",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "cold_process_soap",
+      "namespace": "fragrance",
+      "name": "Cold process soap using fragrance",
+      "description": "Link to video, Discoloration and Perormance",
+      "type": {
+        "name": "multi_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "bulk_discount_message",
+      "namespace": "custom",
+      "name": "Bulk Discount Message",
+      "description": "Alternate bulk  discount messaging for complex products",
+      "type": {
+        "name": "multi_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "additional_data",
+      "namespace": "custom",
+      "name": "additional-data",
+      "description": "functional and made better additional data",
+      "type": {
+        "name": "metaobject_reference",
         "category": "REFERENCE"
       }
     },
     {
-      "key": "color-pattern",
-      "namespace": "shopify",
-      "name": "Color",
-      "description": "Defines the primary color or pattern, such as blue or striped",
+      "key": "alternate_wick_collections",
+      "namespace": "custom",
+      "name": "alternate-wick-collections",
+      "description": "Wicks that have additional collections of collections like color wood wicks",
       "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "audio-connectivity",
-      "namespace": "shopify",
-      "name": "Audio connectivity",
-      "description": "Defines the types of audio connection a product supports, such as HDMI or USB",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "connectivity-technology",
-      "namespace": "shopify",
-      "name": "Connectivity technology",
-      "description": "Defines the method of data transfer in a product, e.g. Bluetooth, USB",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "headphone-style",
-      "namespace": "shopify",
-      "name": "Headphone style",
-      "description": "Defines the design headphones, e.g. behind-the-neck, earbuds",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "microphone-type",
-      "namespace": "shopify",
-      "name": "Microphone type",
-      "description": "Defines the microphone technology used, such as condenser or dynamic",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "device-interface",
-      "namespace": "shopify",
-      "name": "Device interface",
-      "description": "Specifies the method of connection between electronic devices, e.g. HDMI, USB",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "polar-pattern",
-      "namespace": "shopify",
-      "name": "Polar pattern",
-      "description": "Indicates the sound pick-up orientation of a microphone, such as omnidirectional or cardioid",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "power-source",
-      "namespace": "shopify",
-      "name": "Power source",
-      "description": "Specifies the power source a product uses to operate, such as solar or batteries",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "data-network",
-      "namespace": "shopify",
-      "name": "Data network",
-      "description": "Specifies the data network compatibility of mobile devices, like LTE or 3G",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "operating-system",
-      "namespace": "shopify",
-      "name": "Operating system",
-      "description": "Defines the system software a device uses, such as iOS or ChromeOS",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "display-resolution",
-      "namespace": "shopify",
-      "name": "Display resolution",
-      "description": "Defines resolution of a digital display, e.g. 1280 x 1024, full HD",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "battery-technology",
-      "namespace": "shopify",
-      "name": "Battery technology",
-      "description": "Specifies the type of battery used in electronics, such as alkaline or lithium-ion",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "cosmetic-condition",
-      "namespace": "shopify",
-      "name": "Cosmetic condition",
-      "description": "Defines the wear and condition of electronics, e.g. new, opened-never used",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "sim-card-capability",
-      "namespace": "shopify",
-      "name": "SIM card capability",
-      "description": "Indicates the type of SIM card configuration in mobile devices, e.g. dual, embedded",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "subscription-type",
-      "namespace": "shopify",
-      "name": "Subscription type",
-      "description": "Specifies the type of subscription, typically for mobile devices; e.g. pay as you go, pre-paid",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "removable-storage-formats-supported",
-      "namespace": "shopify",
-      "name": "Removable storage formats supported",
-      "description": "Defines the removable storage formats a device is compatible with, e.g. SD, microUSB",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "sim-card-type-2",
-      "namespace": "shopify",
-      "name": "SIM card type 2",
-      "description": "Specifies compatible SIM card format for a mobile phone's slot 2, such as a Nano SIM",
-      "type": {
-        "name": "list.metaobject_reference",
+        "name": "list.collection_reference",
         "category": "REFERENCE"
       }
     },
@@ -230,36 +215,277 @@
       }
     },
     {
-      "key": "complementary_products",
-      "namespace": "globo--filter--product_recommendation",
-      "name": "Complementary products",
-      "description": null,
+      "key": "pack",
+      "namespace": "case",
+      "name": "case pack",
+      "description": "Case pack quantity",
+      "type": {
+        "name": "number_integer",
+        "category": "NUMBER"
+      }
+    },
+    {
+      "key": "product",
+      "namespace": "more_information",
+      "name": "product - more information",
+      "description": "Use this metafield to show more information only on page load",
+      "type": {
+        "name": "multi_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "perfect_matches_links",
+      "namespace": "custom",
+      "name": "perfect matches links",
+      "description": "links for the pdp page under \"perfect matches\" accordion",
+      "type": {
+        "name": "list.mixed_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "custom_product",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Custom Product",
+      "description": "Use to indicate whether or not the unique product identifiers (UPIs) GTIN, MPN, and brand are available for your product.",
+      "type": {
+        "name": "boolean",
+        "category": "TRUE_FALSE"
+      }
+    },
+    {
+      "key": "rating",
+      "namespace": "reviews",
+      "name": "Product rating",
+      "description": "Average rating from customers",
+      "type": {
+        "name": "rating",
+        "category": "RATING"
+      }
+    },
+    {
+      "key": "rating_count",
+      "namespace": "reviews",
+      "name": "Product rating count",
+      "description": "Total number of ratings from customers",
+      "type": {
+        "name": "number_integer",
+        "category": "NUMBER"
+      }
+    },
+    {
+      "key": "bundle_products",
+      "namespace": "custom",
+      "name": "Bundle Products",
+      "description": "",
       "type": {
         "name": "list.product_reference",
         "category": "REFERENCE"
       }
     },
     {
-      "key": "related_products",
-      "namespace": "globo--filter--product_recommendation",
-      "name": "Related products",
-      "description": null,
+      "key": "additional_products",
+      "namespace": "custom",
+      "name": "additional_products",
+      "description": "Additonal Products that needs to be added with the product",
       "type": {
         "name": "list.product_reference",
         "category": "REFERENCE"
       }
     },
     {
-      "key": "bought_together_products",
-      "namespace": "globo--filter--product_recommendation",
-      "name": "Bought together products",
-      "description": null,
+      "key": "features",
+      "namespace": "custom",
+      "name": "Features",
+      "description": "",
       "type": {
-        "name": "list.product_reference",
+        "name": "list.metaobject_reference",
         "category": "REFERENCE"
       }
     }
   ],
-  "variant": [],
+  "variant": [
+    {
+      "key": "variant",
+      "namespace": "more_information",
+      "name": "variant - more information",
+      "description": "Use this metafield to show more information as the variant level",
+      "type": {
+        "name": "multi_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "quantity",
+      "namespace": "variant_bulk_discount",
+      "name": "Bulk Discount Quantity",
+      "description": "Case pack quantity break points. ",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "percent",
+      "namespace": "variant_bulk_discount",
+      "name": "Bulk Discount Percentage",
+      "description": "Discount percentage for each bulk pack",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "media",
+      "namespace": "custom",
+      "name": "media",
+      "description": "Additional images for variants",
+      "type": {
+        "name": "list.file_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "pack",
+      "namespace": "case",
+      "name": "case pack",
+      "description": "Case pack quantity",
+      "type": {
+        "name": "number_integer",
+        "category": "NUMBER"
+      }
+    },
+    {
+      "key": "custom_label_4",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Custom Label 4",
+      "description": "Label that you assign to a product to help organize bidding and reporting in Shopping campaigns",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "custom_label_3",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Custom Label 3",
+      "description": "Label that you assign to a product to help organize bidding and reporting in Shopping campaigns",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "custom_label_2",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Custom Label 2",
+      "description": "Label that you assign to a product to help organize bidding and reporting in Shopping campaigns",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "custom_label_1",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Custom Label 1",
+      "description": "Label that you assign to a product to help organize bidding and reporting in Shopping campaigns",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "custom_label_0",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Custom Label 0",
+      "description": "Label that you assign to a product to help organize bidding and reporting in Shopping campaigns",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "size_system",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Size System",
+      "description": "The country of the size system used by your product.",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "size_type",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Size Type",
+      "description": "Your apparel product’s cut.",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "mpn",
+      "namespace": "mm-google-shopping",
+      "name": "Google: MPN",
+      "description": "Your product’s Manufacturer Part Number (MPN).",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "gender",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Gender",
+      "description": "The gender for which your product is intended.",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "condition",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Condition",
+      "description": "The condition of your product at time of sale.",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "age_group",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Age Group",
+      "description": "The demographic for which your product is intended.",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "tariff_fixed",
+      "namespace": "custom",
+      "name": "Tariff Fixed",
+      "description": "Fixed tariff amount in dollars (e.g., 5.00 for $5.00)",
+      "type": {
+        "name": "number_decimal",
+        "category": "NUMBER"
+      }
+    },
+    {
+      "key": "tariff_percentage",
+      "namespace": "custom",
+      "name": "Tariff Percentage",
+      "description": "Tariff percentage to apply (e.g., 20 for 20%)",
+      "type": {
+        "name": "number_decimal",
+        "category": "NUMBER"
+      }
+    }
+  ],
   "shop": []
 }

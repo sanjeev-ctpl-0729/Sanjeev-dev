@@ -1,0 +1,38 @@
+{% style %}
+  h1 {
+    color: green;
+    text-align: center;
+  }
+{% endstyle %}
+
+<h1>{{ section.settings.heading-text }}</h1>
+<p>{{ section.settings.paragraph }}</p>
+<p>i am a software engineer in codilar Technology</p>
+
+<script>
+
+</script>
+
+{% schema %}
+{
+    "name": "Demo training section", 
+    "settings": [
+        {
+            "type": "text",
+            "id": "heading-text",
+            "label": "Heading text",
+            "info": "Enter heading text"
+        },
+        {
+            "type": "text",
+            "id": "paragraph",
+            "label": "Paragraph"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Demo training section"
+        }
+    ]
+}
+{% endschema %}
